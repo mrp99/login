@@ -43,14 +43,13 @@ export class SignUpComponent {
   }
 
   public submit(): void {
-    //usando o nullish => ??
     const name = this.signupForm.value.name ?? '';
     const email = this.signupForm.value.email ?? '';
     const password = this.signupForm.value.password ?? '';
     const passwordConfirm = this.signupForm.value.passwordConfirm ?? '';
 
     if (name && email && password && passwordConfirm) {
-      this.loginService.login(email, password).subscribe({
+      this.loginService.signup(name, email, password).subscribe({
         next: () => this.toastrService.success('Login feito com sucesso'),
         error: () => this.toastrService.error('Erro ao fazer login'),
       });
